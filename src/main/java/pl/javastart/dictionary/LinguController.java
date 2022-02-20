@@ -1,5 +1,6 @@
 package pl.javastart.dictionary;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
@@ -14,9 +15,16 @@ class LinguController {
     private static final int TEST = 1;
     private static final int CLOSE_APP = 2;
 
-    private EntryRepository entryRepository = new EntryRepository();
-    private FileService fileService = new FileService();
-    private Scanner scanner = new Scanner(System.in);
+    private final EntryRepository entryRepository;
+    private final FileService fileService;
+    private final Scanner scanner;
+
+    @Autowired
+    public LinguController(EntryRepository entryRepository, FileService fileService, Scanner scanner) {
+        this.entryRepository = entryRepository;
+        this.fileService = fileService;
+        this.scanner = scanner;
+    }
 
     void mainLoop() {
         System.out.println("Witaj w aplikacji LinguApp");

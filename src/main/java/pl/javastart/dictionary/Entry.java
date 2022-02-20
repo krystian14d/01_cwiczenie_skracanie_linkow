@@ -2,11 +2,12 @@ package pl.javastart.dictionary;
 
 import javax.persistence.Entity;
 
-@Entity
+
 public class Entry {
 
     private String original;
     private String translation;
+
 
     Entry(String original, String translation) {
         this.original = original;
