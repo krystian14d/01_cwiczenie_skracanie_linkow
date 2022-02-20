@@ -1,8 +1,11 @@
 package pl.javastart.dictionary;
 
+import org.springframework.stereotype.Repository;
+
 import java.io.IOException;
 import java.util.*;
 
+@Repository
 class EntryRepository {
     private List<Entry> entries;
 
