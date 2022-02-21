@@ -91,7 +91,7 @@ class LinguController {
         } catch (IOException e) {
             outputWriter.println("Nie udało się zapisać zmian");
         }
-        outputWriter.println("Bye Bye!");
+        outputWriter.println("Do zobaczenia!");
     }
 
     private void printMenu() {
