@@ -1,8 +1,5 @@
 package pl.javastart.dictionary;
 
-import javax.persistence.Entity;
-
-
 public class Entry {
 
     private String original;
