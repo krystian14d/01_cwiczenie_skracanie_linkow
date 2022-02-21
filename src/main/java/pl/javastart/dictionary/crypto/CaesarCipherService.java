@@ -17,4 +17,12 @@ public class CaesarCipherService implements CipherService{
     public String decrypt(String cipher) {
         return null;
     }
+
+    private static int shift(int character){
+        return character + SHIFT;
+    }
+
+    private static int shiftBack (int character){
+        return character - SHIFT;
+    }
 }
