@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Profile("dev")
-public class RawCipherService implements CipherService{
+public class RawCipherService implements CipherService {
     @Override
     public String encrypt(String text) {
         return text;

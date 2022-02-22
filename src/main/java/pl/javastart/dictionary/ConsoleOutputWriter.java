@@ -1,7 +1,7 @@
 package pl.javastart.dictionary;
 
 import org.springframework.stereotype.Component;
-import pl.javastart.dictionary.crypto.formatter.TextFormatter;
+import pl.javastart.dictionary.formatter.TextFormatter;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
