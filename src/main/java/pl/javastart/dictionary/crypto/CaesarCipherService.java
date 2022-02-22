@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Profile("prod")
-public class CaesarCipherService implements CipherService{
+public class CaesarCipherService implements CipherService {
     private static final int SHIFT = 3;
 
     @Override
@@ -24,11 +24,11 @@ public class CaesarCipherService implements CipherService{
                 .toString();
     }
 
-    private static int shift(int character){
+    private static int shift(int character) {
         return character + SHIFT;
     }
 
-    private static int shiftBack (int character){
+    private static int shiftBack(int character) {
         return character - SHIFT;
     }
 }

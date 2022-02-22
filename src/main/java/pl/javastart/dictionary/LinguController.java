@@ -31,7 +31,7 @@ class LinguController {
     void mainLoop() {
         outputWriter.println("Witaj w aplikacji LinguApp");
         int option = UNDEFINED;
-        while(option != CLOSE_APP) {
+        while (option != CLOSE_APP) {
             printMenu();
             option = chooseOption();
             executeOption(option);
@@ -55,17 +55,17 @@ class LinguController {
     }
 
     private void test() {
-        if(entryRepository.isEmpty()) {
+        if (entryRepository.isEmpty()) {
             outputWriter.println("Dodaj przynajmniej jedną frazę do bazy.");
             return;
         }
-        final int testSize = entryRepository.size() > 10? 10 : entryRepository.size();
+        final int testSize = entryRepository.size() > 10 ? 10 : entryRepository.size();
         Set<Entry> randomEntries = entryRepository.getRandomEntries(testSize);
         int score = 0;
         for (Entry entry : randomEntries) {
             outputWriter.println(String.format("Podaj tłumaczenie dla :\"%s\"\n", entry.getOriginal()));
             String translation = scanner.nextLine();
-            if(entry.getTranslation().equalsIgnoreCase(translation)) {
+            if (entry.getTranslation().equalsIgnoreCase(translation)) {
                 outputWriter.println("Odpowiedź poprawna");
                 score++;
             } else {
@@ -105,12 +105,12 @@ class LinguController {
         int option;
         try {
             option = scanner.nextInt();
-        } catch(InputMismatchException e) {
+        } catch (InputMismatchException e) {
             option = UNDEFINED;
         } finally {
             scanner.nextLine();
         }
-        if(option > UNDEFINED && option <= CLOSE_APP)
+        if (option > UNDEFINED && option <= CLOSE_APP)
             return option;
         else
             return UNDEFINED;
