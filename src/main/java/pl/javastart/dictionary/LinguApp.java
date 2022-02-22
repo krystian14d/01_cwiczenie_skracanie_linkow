@@ -6,6 +6,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 @SpringBootApplication
 public class LinguApp {
