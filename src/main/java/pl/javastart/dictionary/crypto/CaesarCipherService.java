@@ -10,12 +10,18 @@ public class CaesarCipherService implements CipherService{
 
     @Override
     public String encrypt(String text) {
-        return null;
+        return text.chars()
+                .map(CaesarCipherService::shift)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
     }
 
     @Override
     public String decrypt(String cipher) {
-        return null;
+        return cipher.chars()
+                .map(CaesarCipherService::shiftBack)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
     }
 
     private static int shift(int character){

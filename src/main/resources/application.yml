@@ -1,3 +1,5 @@
 filename:
   data.csv
-
+spring:
+  profiles:
+    active: dev
