@@ -15,9 +15,4 @@ public class LinguApp {
         LinguController linguController = context.getBean(LinguController.class);
         linguController.mainLoop();
     }
-
-    @Bean
-    Scanner scanner() {
-        return new Scanner(System.in);
-    }
 }
