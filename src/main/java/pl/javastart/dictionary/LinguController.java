@@ -4,16 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
-import java.util.InputMismatchException;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Set;
 
 @Controller
 class LinguController {
-    private static final int UNDEFINED = -1;
-    private static final int ADD_ENTRY = 0;
-    private static final int TEST = 1;
-    private static final int CLOSE_APP = 2;
 
     private final EntryRepository entryRepository;
     private final FileService fileService;
@@ -30,15 +26,14 @@ class LinguController {
 
     void mainLoop() {
         outputWriter.logInfo("Witaj w aplikacji LinguApp");
-        int option = UNDEFINED;
-        while (option != CLOSE_APP) {
-            printMenu();
-            option = chooseOption();
-            executeOption(option);
-        }
+        Options option;
+        printMenu();
+        option = chooseOption();
+        executeOption(option);
+
     }
 
-    private void executeOption(int option) {
+    private void executeOption(Options option) {
         switch (option) {
             case ADD_ENTRY:
                 addEntry();
@@ -96,23 +91,23 @@ class LinguController {
 
     private void printMenu() {
         outputWriter.logInfo("Wybierz opcję:");
-        outputWriter.logInfo("0 - Dodaj frazę");
-        outputWriter.logInfo("1 - Test");
-        outputWriter.logInfo("2 - Koniec programu");
+        Arrays.stream(Options.values()).forEach(options -> outputWriter.logInfo(options.toString()));
     }
 
-    private int chooseOption() {
-        int option;
-        try {
-            option = scanner.nextInt();
-        } catch (InputMismatchException e) {
-            option = UNDEFINED;
-        } finally {
+    private Options chooseOption() {
+        boolean correctOptionSelected = false;
+        Options option = null;
+        while (!correctOptionSelected) {
+            outputWriter.logInfo("Wybierz opcję:");
+            int optionId = scanner.nextInt();
             scanner.nextLine();
+            try {
+                option = Options.numberToCategory(optionId);
+                correctOptionSelected = true;
+            } catch (InvalidOptionException e) {
+                outputWriter.logInfo(e.getMessage());
+            }
         }
-        if (option > UNDEFINED && option <= CLOSE_APP)
-            return option;
-        else
-            return UNDEFINED;
+        return option;
     }
 }
