@@ -1,4 +1,4 @@
-package pl.javastart.dictionary.crypto.formatter;
+package pl.javastart.dictionary.formatter;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;

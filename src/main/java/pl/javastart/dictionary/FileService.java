@@ -17,8 +17,9 @@ class FileService {
     private String fileName;
     private CipherService cipherService;
 
-    public FileService(@Value("${filename}") String fileName) {
+    public FileService(@Value("${filename}") String fileName, CipherService cipherService) {
         this.fileName = fileName;
+        this.cipherService = cipherService;
     }
 
     List<Entry> readAllFile() throws IOException {
